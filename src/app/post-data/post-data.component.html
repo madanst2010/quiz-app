@@ -1,0 +1,9 @@
+<form #formData = "ngForm">
+  <input type="text" name="question" ngModel>
+  <input type="text" name="option1" ngModel>
+  <input type="text" name="option2" ngModel>
+  <input type="text" name="option3" ngModel>
+  <input type="text" name="option4" ngModel>
+  <input type="text" name="ans" ngModel>
+  <button (click)="postQuestion(formData.value)">Post Data</button>
+</form>

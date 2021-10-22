@@ -1,0 +1,21 @@
+<button (click)="fun($event)">Start Quiz</button>
+<div *ngIf = 'Questions.length > 0'>
+  <div *ngFor = "let que of Questions  | paginate: { itemsPerPage: 1, currentPage: p }; let i = index">
+      <h1>Q.{{i + 1}}){{que.question}}</h1> 
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="tempAns[i]" > 
+        <mat-radio-button value={{que.option1}}> {{que.option1 | titlecase}} </mat-radio-button>
+        <mat-radio-button value={{que.option2}}> {{que.option2 | titlecase}}</mat-radio-button>
+        <mat-radio-button value={{que.option3}}> {{que.option3 | titlecase}}</mat-radio-button>
+        <mat-radio-button value={{que.option4}}> {{que.option4 | titlecase}}</mat-radio-button>
+        
+        <button *ngIf = 'p == last' (click)="submitQuiz() ">Submit</button>
+      </mat-radio-group>
+    </div>
+    <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+  <div *ngIf = "result == true">
+        Result: <br>
+        Correct Ans : {{correct}} <br>
+        Wrong Ans : {{wrong}} <br>
+        Not Attempted Ans : {{notAttempt}} <br>
+  </div>
+</div>

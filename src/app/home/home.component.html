@@ -1,0 +1,21 @@
+<button (click)="fun($event)">Get Data</button>
+<div *ngIf = 'Questions.length > 0'>
+  <div *ngFor = "let que of Questions let i = index">
+      <h1>Q.{{i + 1}}){{que.question}}
+        <span (click) = "deleteQ(que.id)"><mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon></span>
+        <span (click) = "updateQ(que.id)"><mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon></span>
+        </h1> 
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"> 
+        <mat-radio-button value={{que.option1}}> {{que.option1 | titlecase}} </mat-radio-button>
+        <mat-radio-button value={{que.option2}}> {{que.option2 | titlecase}}</mat-radio-button>
+        <mat-radio-button value={{que.option3}}> {{que.option3 | titlecase}}</mat-radio-button>
+        <mat-radio-button value={{que.option4}}> {{que.option4 | titlecase}}</mat-radio-button>
+      </mat-radio-group>
+      <button (click) = 'showAnswer(i)'>Show</button>
+      <br>
+      <div *ngIf = 'showAns[i] == true'>
+          ans = {{que.ans}}
+      </div>
+      <br>
+  </div>
+</div>
